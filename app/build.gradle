@@ -53,10 +53,14 @@ android {
     signingConfigs {
         release {
             try {
-                storeFile file("./keystore/release.keystore")
-                storePassword "testres"
-                keyAlias "testres"
-                keyPassword "testres"
+//                storeFile file("./keystore/release.keystore")
+//                storePassword "testres"
+//                keyAlias "testres"
+//                keyPassword "testres"
+                storeFile file("./keystore/eastweather.key")
+                storePassword "wxp77312"
+                keyAlias "androidwindows7"
+                keyPassword "wxp77312"
             } catch (ex) {
                 throw new InvalidUserDataException(ex.toString())
             }
@@ -114,7 +118,7 @@ android {
         }
         debug {
             debuggable true
-            minifyEnabled false
+            minifyEnabled true
             signingConfig signingConfigs.debug
         }
     }
@@ -135,17 +139,17 @@ def bakPath = file("${buildDir}/bakApk/")
 ext {
     //for some reason, you may want to ignore tinkerBuild, such as instant run debug build?
     tinkerEnabled = true
-
+//D:\code\tinker-master\tinker-sample-android\app\build\bakApk\app-release-0414-17-21-10.apk
     //for normal build
     //old apk file to build patch apk
-    tinkerOldApkPath = "${bakPath}/app-debug-1018-17-32-47.apk"
+    tinkerOldApkPath = "${bakPath}/app-release-0414-17-21-10.apk"
     //proguard mapping file to build patch apk
-    tinkerApplyMappingPath = "${bakPath}/app-debug-1018-17-32-47-mapping.txt"
+    tinkerApplyMappingPath = "${bakPath}/app-release-0414-17-21-10-mapping.txt"
     //resource R.txt to build patch apk, must input if there is resource changed
-    tinkerApplyResourcePath = "${bakPath}/app-debug-1018-17-32-47-R.txt"
+    tinkerApplyResourcePath = "${bakPath}/app-release-0414-17-21-10-R.txt"
 
     //only use for build all flavor, if not, just ignore this field
-    tinkerBuildFlavorDirectory = "${bakPath}/app-1018-17-32-47"
+//    tinkerBuildFlavorDirectory = "${bakPath}/app-1018-17-32-47"
 }
 
 
